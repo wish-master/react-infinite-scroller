@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class InfiniteScroll extends Component {
+export default React.forwardRef((props, ref) => (
+  <InfiniteScroll
+    {...props}
+    reference={typeof ref === 'function' ? ref : r => (ref = r)}
+  />
+));
+
+export class InfiniteScroll extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
     element: PropTypes.node,
     hasMore: PropTypes.bool,
     initialLoad: PropTypes.bool,
@@ -11,7 +17,7 @@ export default class InfiniteScroll extends Component {
     loader: PropTypes.node,
     loadMore: PropTypes.func.isRequired,
     pageStart: PropTypes.number,
-    ref: PropTypes.func,
+    reference: PropTypes.func,
     getScrollParent: PropTypes.func,
     threshold: PropTypes.number,
     useCapture: PropTypes.bool,
@@ -23,7 +29,7 @@ export default class InfiniteScroll extends Component {
     hasMore: false,
     initialLoad: true,
     pageStart: 0,
-    ref: null,
+    reference: null,
     threshold: 250,
     useWindow: true,
     isReverse: false,
@@ -256,7 +262,7 @@ export default class InfiniteScroll extends Component {
       loader,
       loadMore,
       pageStart,
-      ref,
+      reference,
       threshold,
       useCapture,
       useWindow,
@@ -266,8 +272,8 @@ export default class InfiniteScroll extends Component {
 
     props.ref = node => {
       this.scrollComponent = node;
-      if (ref) {
-        ref(node);
+      if (reference) {
+        reference(node);
       }
     };
 

@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+exports.InfiniteScroll = undefined;
 
 var _createClass = (function() {
   function defineProperties(target, props) {
@@ -20,6 +21,20 @@ var _createClass = (function() {
     return Constructor;
   };
 })();
+
+var _extends =
+  Object.assign ||
+  function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
 
 var _react = require('react');
 
@@ -81,7 +96,21 @@ function _inherits(subClass, superClass) {
       : (subClass.__proto__ = superClass);
 }
 
-var InfiniteScroll = (function(_Component) {
+exports.default = _react2.default.forwardRef(function(props, ref) {
+  return _react2.default.createElement(
+    InfiniteScroll,
+    _extends({}, props, {
+      reference:
+        typeof ref === 'function'
+          ? ref
+          : function(r) {
+              return (ref = r);
+            }
+    })
+  );
+});
+
+var InfiniteScroll = (exports.InfiniteScroll = (function(_Component) {
   _inherits(InfiniteScroll, _Component);
 
   function InfiniteScroll(props) {
@@ -357,7 +386,7 @@ var InfiniteScroll = (function(_Component) {
           loader = renderProps.loader,
           loadMore = renderProps.loadMore,
           pageStart = renderProps.pageStart,
-          ref = renderProps.ref,
+          reference = renderProps.reference,
           threshold = renderProps.threshold,
           useCapture = renderProps.useCapture,
           useWindow = renderProps.useWindow,
@@ -371,7 +400,7 @@ var InfiniteScroll = (function(_Component) {
             'loader',
             'loadMore',
             'pageStart',
-            'ref',
+            'reference',
             'threshold',
             'useCapture',
             'useWindow',
@@ -380,8 +409,8 @@ var InfiniteScroll = (function(_Component) {
 
         props.ref = function(node) {
           _this2.scrollComponent = node;
-          if (ref) {
-            ref(node);
+          if (reference) {
+            reference(node);
           }
         };
 
@@ -403,10 +432,9 @@ var InfiniteScroll = (function(_Component) {
   ]);
 
   return InfiniteScroll;
-})(_react.Component);
+})(_react.Component));
 
 InfiniteScroll.propTypes = {
-  children: _propTypes2.default.node.isRequired,
   element: _propTypes2.default.node,
   hasMore: _propTypes2.default.bool,
   initialLoad: _propTypes2.default.bool,
@@ -414,7 +442,7 @@ InfiniteScroll.propTypes = {
   loader: _propTypes2.default.node,
   loadMore: _propTypes2.default.func.isRequired,
   pageStart: _propTypes2.default.number,
-  ref: _propTypes2.default.func,
+  reference: _propTypes2.default.func,
   getScrollParent: _propTypes2.default.func,
   threshold: _propTypes2.default.number,
   useCapture: _propTypes2.default.bool,
@@ -425,7 +453,7 @@ InfiniteScroll.defaultProps = {
   hasMore: false,
   initialLoad: true,
   pageStart: 0,
-  ref: null,
+  reference: null,
   threshold: 250,
   useWindow: true,
   isReverse: false,
@@ -433,5 +461,3 @@ InfiniteScroll.defaultProps = {
   loader: null,
   getScrollParent: null
 };
-exports.default = InfiniteScroll;
-module.exports = exports['default'];
