@@ -1,12 +1,12 @@
 {
-  "name": "react-infinite-scroller",
-  "version": "1.2.6",
+  "name": "reactjs-infinite-scroll",
+  "version": "1.0.0",
   "description": "Infinite scroll component for React in ES6",
   "main": "index.js",
   "jsnext:main": "src/InfiniteScroll.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/danbovey/react-infinite-scroller.git"
+    "url": "git://github.com/wish-master/react-infinite-scroller.git"
   },
   "scripts": {
     "build": "mkdirp dist && babel src/InfiniteScroll.js --out-file dist/InfiniteScroll.js",
@@ -27,10 +27,10 @@
     "scroll",
     "react"
   ],
-  "author": "Dan Bovey <dan@danbovey.uk>",
+  "author": "@wish-master",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danbovey/react-infinite-scroller/issues"
+    "url": "https://github.com/wish-master/react-infinite-scroller/issues"
   },
   "dependencies": {
     "prop-types": "^15.5.8"
