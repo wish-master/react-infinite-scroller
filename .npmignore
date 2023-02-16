@@ -3,3 +3,7 @@ test
 .nyc_output
 docs
 .eslintrc.js
+.github
+.vscode
+.editorconfig
+.idea
